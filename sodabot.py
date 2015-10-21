@@ -2,6 +2,7 @@
 from gpiopins import GPIOSoda
 import logging
 import telebot
+import datetime
 
 with open('api_key.txt') as key_file:
     API_KEY = key_file.readline().strip()
@@ -57,6 +58,15 @@ def handle_temp_status(message):
     bot.reply_to(message, msg)
 
 
+def handle_bier(message):
+    msg = ""
+    if datetime.datetime.now().hour > 7 and datetime.datetime.now().hour < 16:
+        msg += "Kein Bier vor vier!!!"
+    else:
+        msg += "Prost!"
+    return msg
+
+
 @bot.message_handler(func=lambda m: True)
 def handle_all_messages(message):
     """
@@ -65,6 +75,8 @@ def handle_all_messages(message):
     if message.text:
         if "dumm" in message.text.lower():
             bot.reply_to(message, "Nein, keinenfalls!")
+        elif "bier" in message.text.lower():
+            bot.reply_to(message, handle_bier(message))
         else:
             log.debug('Chat ID: %d, User: %s', message.chat.id, message.chat.username)
             bot.reply_to(message, "Awesome!")
