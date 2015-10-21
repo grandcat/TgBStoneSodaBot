@@ -10,7 +10,7 @@ gpio export 24 in
 gpio export 25 in
 
 # Start SodaBot with logging
-COMMAND="python3 TelegramSodaBot.py"
+COMMAND="python3 sodabot.py"
 LOGFILE=restart.txt
 
 writelog() {

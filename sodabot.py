@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 from gpiopins import GPIOSoda
+import w1
 import logging
 import telebot
 import datetime
@@ -52,7 +53,14 @@ def handle_soda_status(message):
 
 @bot.message_handler(commands=['gettemp'])
 def handle_temp_status(message):
-    msg = "Ups, das weiß ich gerade auch nicht so genau. Mir fehlt noch ein passender Sensor. ".encode() \
+    msg = ''
+    try:
+        temp = w1.read_therm_sensor()
+        msg = "Im Innenraum hat es gerade " + str(temp) + "°C."
+
+    except IOError as e:
+        log.error("W1 sensor not connected properly. Please check.")
+        msg = "Ups, das weiß ich gerade auch nicht so genau. Mein Sensor ist offline. ".encode() \
           + b'\xF0\x9F\x98\x88'
 
     bot.reply_to(message, msg)
