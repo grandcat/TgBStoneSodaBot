@@ -7,7 +7,7 @@ class GPIOSoda:
     GPIO_PUD_DOWN = 1
 
     # BCM port mapping
-    PINS = {'MATE': 17, 'ADEL': 18, 'SPEZI': 21, 'RADLER': 22, 'TEGERN': 23, 'GUSTL': 24, 'EIS': 25}
+    PINS = {'MATE': 17, 'ADEL': 18, 'SPEZI': 21, 'RADLER': 22, 'TEGERN': 23, 'GUSTL': 24}  # 'EIS': 25
 
     def __init__(self):
         self.log = logging.getLogger(__name__)
