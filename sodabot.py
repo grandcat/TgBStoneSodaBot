@@ -65,6 +65,10 @@ def handle_temp_status(message):
 
     bot.reply_to(message, msg)
 
+@bot.message_handler(commands=['gettime'])
+def handle_get_time(message):
+    msg = "Bei mir ists jetzt " + str(datetime.datetime.now().hour) + ":" + str(datetime.datetime.now().minute)
+    bot.reply_to(message, msg)
 
 def handle_bier(message):
     msg = ""
