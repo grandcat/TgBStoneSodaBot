@@ -65,13 +65,15 @@ def handle_temp_status(message):
 
     bot.reply_to(message, msg)
 
-
 def handle_bier(message):
     msg = ""
-    if datetime.datetime.now().hour > 7 and datetime.datetime.now().hour < 16:
-        msg += "Kein Bier vor vier!!!"
+    time = datetime.datetime.now()
+    if time.hour > 7 and time.hour < 16:
+        msg += "Kein Bier vor vier!!!\n"
+        msg += "Bei mir ists jetzt " + time.strftime("%H:%M")
     else:
-        msg += "Prost!"
+        msg += "Prost ð» !"
+
     return msg
 
 
