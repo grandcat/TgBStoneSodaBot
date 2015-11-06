@@ -70,9 +70,9 @@ def handle_bier(message):
     time = datetime.datetime.now()
     if time.hour > 7 and time.hour < 16:
         msg += "Kein Bier vor vier!!!\n"
-        msg += "Bei mir ists jetzt " + time.strftime("%H:%M") + "Uhr."
+        msg += "Bei mir ists jetzt " + time.strftime("%H:%M") + " Uhr."
     else:
-        msg += "Prost 🍻  !"
+        msg += "Prost 🍻 !"
 
     return msg
 
